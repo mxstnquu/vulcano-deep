@@ -2,7 +2,7 @@ configuration {
     modi: "drun";
     kb-cancel: "Escape,Alt+F1";
     display-drun: "RUN";
-    show-icons: false;
+    show-icons: true;
 }
 
 element selected.normal {
@@ -31,7 +31,7 @@ element alternate normal {
 listview {
     border-color: transparent;
 
-    lines: 19;
+    lines: 28;
 }
 
 
