@@ -1,0 +1,63 @@
+{
+    //================== Modules configuration ==================//
+    "modules-left": ["hyprland/workspaces"],
+
+    "modules-center": [],
+
+    "modules-right": [
+        /////// "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "memory",
+        "backlight",
+        "hyprland/language",
+        "battery#bat2",
+        "clock",
+        "custom/power"
+    ],
+
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "memory": {
+        "format": "{}% ram"
+    },
+
+    "battery#bat2": {
+        "format": "{}% bat"
+    },
+
+    "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "poweroff",
+    "on-click-right": "reboot",
+    "on-click-middle": "reboot"
+    }
+}
+
