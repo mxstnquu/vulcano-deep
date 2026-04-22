@@ -1,0 +1,23 @@
+{
+    "logo": "auto",
+    "separator": "  ",
+    "modules": [
+        "os",
+	"host",
+        "kernel",
+	"wm",
+        "shell",
+        "cpu",
+        "gpu",
+	"disk",
+        "break",
+	"wmtheme",
+	"theme",
+	"icons",
+	"font",
+	"cursor",
+	"terminal",
+	"terminalfont",
+	"break"
+    ]
+}
