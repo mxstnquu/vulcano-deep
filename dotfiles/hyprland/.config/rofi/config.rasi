@@ -1,0 +1,42 @@
+configuration {
+    modi: "drun";
+    kb-cancel: "Escape,Alt+F1";
+    display-drun: "Run";
+    show-icons: true;
+}
+
+element selected.normal {
+    background-color: #5A0500;
+    border-radius: 6px;
+}
+
+window {
+    border: 3px;
+    border-radius: 12px;
+    border-color: #5A0500;
+    
+    padding: 10px;
+    background-color: #000000CC;
+}
+
+element normal normal {
+    background-color: transparent;
+
+}
+
+element alternate normal {
+    background-color: transparent;
+}
+
+listview {
+    border-color: transparent;
+
+    lines: 28;
+}
+
+
+* {
+    //background-color: transparent;
+    foreground: #ffffffff;
+}
+
