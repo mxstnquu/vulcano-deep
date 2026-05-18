@@ -1,6 +1,9 @@
 {
     //================== Modules configuration ==================//
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": [
+        // "logo",
+        "hyprland/workspaces"
+    ],
 
     "modules-center": [],
 
@@ -8,7 +11,7 @@
         /////// "idle_inhibitor",
         "pulseaudio",
         "network",
-        "memory",
+        // "memory",
         "backlight",
         "hyprland/language",
         "battery#bat2",

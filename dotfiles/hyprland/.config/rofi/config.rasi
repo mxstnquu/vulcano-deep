@@ -2,12 +2,7 @@ configuration {
     modi: "drun";
     kb-cancel: "Escape,Alt+F1";
     display-drun: "Run";
-    show-icons: true;
-}
-
-element selected.normal {
-    background-color: #5A0500;
-    border-radius: 6px;
+    show-icons: true;    
 }
 
 window {
@@ -19,24 +14,41 @@ window {
     background-color: #000000CC;
 }
 
+element {
+    padding: 12px 8px;
+    border-radius: 8px;
+    margin: 2px;
+}
+
 element normal normal {
     background-color: transparent;
-
 }
 
 element alternate normal {
     background-color: transparent;
 }
 
+element selected.normal {
+    background-color: #5A0500;
+    border-radius: 10px;
+}
+
+element-icon {
+    size: 32px;
+    border-radius: 8px;
+}
+
+element-text {
+    padding-left: 10px;
+}
+
 listview {
     border-color: transparent;
-
-    lines: 28;
+    columns: 2;
+    lines: 12;
 }
 
 
 * {
-    //background-color: transparent;
-    foreground: #ffffffff;
+    foreground: #ffffffff;    
 }
-
