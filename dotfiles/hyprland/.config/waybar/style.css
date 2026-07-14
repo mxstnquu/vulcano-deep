@@ -4,6 +4,7 @@
     font-family: Arial;
     font-size: 14px;
     min-height: 0;
+	transition: background 0.3s ease, color 0.3s ease;
 }
 
 window#waybar {
@@ -19,14 +20,30 @@ window#waybar.hidden {
     padding-left: 16px;
     padding-right: 16px;
 	border-radius: 26px;
-	transition: none;
+	
     color: transparent;
 	background: transparent;
 }
 
-#workspaces {
+
+/*============ LEFT SIDE ============*/
+
+
+#custom-archicon {
 	margin-top: 6px;
 	margin-left: 12px;
+	padding-left: 2px;
+	padding-right: 2px;
+
+	margin-bottom: 0;
+	border-radius: 26px;
+	background: #282a36;
+	font-size: 17px;
+}
+
+#workspaces {
+	margin-top: 6px;
+	margin-left: 7px;
 	margin-bottom: 0;
 	border-radius: 26px;
 	background: #282a36;
@@ -34,7 +51,6 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-	transition: none;
 	color: #ffffff;
 	border-color: #ffffff;
 	background: transparent;
@@ -42,72 +58,128 @@ window#waybar.hidden {
 }
 
 #workspaces button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #ff0000;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
 }
+
+#workspaces button.active {
+    background: #5a0500;
+    color: #ffffff;
+    border-radius: 26px;
+}
+
+#idle_inhibitor {
+	margin-top: 6px;
+	margin-left: 7px;
+	padding-left: 12px;
+	padding-right: 12px;
+
+	margin-bottom: 0;
+	border-radius: 26px;
+	color: #ffffff;
+	background: #282a36;
+}
+
+#mpris {
+        margin-top: 6px;
+        margin-left: 7px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        margin-bottom: 0;
+        border-radius: 26px;
+        color: #ffffff;
+        background: #5a0500;
+}
+
+#cpu, #memory {
+	margin-top: 6px;
+	margin-left: 7px;
+	padding-left: 13px;
+	padding-right: 13px;
+	margin-bottom: 0;
+	border-radius: 26px;
+	
+	color: #ffffff;
+	background: #282a36;
+}
+
+#custom-archicon:hover, #idle_inhibitor:hover, #cpu:hover, #memory:hover {
+    background: #5a0500;
+    color: #ffffff;
+}
+
+/*============ RIGHT SIDE ============*/
+
 
 #pulseaudio {
 	margin-top: 6px;
 	margin-left: 7px;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 13px;
+	padding-right: 13px;
 	margin-bottom: 0;
 	border-radius: 26px;
-	transition: none;
 	color: #ffffff;
 	background: #5a0500;
+}
+
+#pulseaudio:hover {
+    background: #282a36;
+    color: #ffffff;
 }
 
 #network {
 	margin-top: 6px;
 	margin-left: 7px;
-	padding-left: 17px;
-	padding-right: 17px;
+	padding-left: 13px;
+	padding-right: 13px;
 	margin-bottom: 0;
 	border-radius: 26px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #5a0500;
 }
 
-#memory {
-	margin-top: 6px;
-	margin-left: 7px;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-bottom: 0;
-	border-radius: 26px;
-	transition: none;
-	color: #ffffff;
-	background: #5a0500;
+#network:hover {
+    background: #282a36;
+    color: #ffffff;
 }
 
 #backlight {
 	margin-top: 6px;
 	margin-left: 7px;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 12px;
+	padding-right: 12px;
 
 	margin-bottom: 0;
 	border-radius: 26px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #5a0500;
 }
 
+#backlight:hover {
+    background: #282a36;
+    color: #ffffff;
+
+}
+
+
 #language {
 	margin-top: 6px;
 	margin-left: 7px;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 12px;
+	padding-right: 12px;
 
 	margin-bottom: 0;
 	border-radius: 26px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #5a0500;
+}
+
+#language:hover {
+    background: #282a36;
+    color: #ffffff;
 }
 
 #battery {
@@ -118,34 +190,38 @@ window#waybar.hidden {
 
 	margin-bottom: 0;
 	border-radius: 26px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #5a0500;
 }
 
 #clock {
 	margin-top: 6px;
-	margin-left: 7px;
-	
+	margin-left: 7px;	
 	padding-left: 12px;
 	padding-right: 12px;
 
 	border-radius: 20px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #5a0500;
 }
 
 #custom-power {
 	margin-top: 6px;
-	/* margin-left: 22px; */
+	margin-bottom: 0;
 	margin-left: 7px;
 	margin-right: 12px;
 	padding-left: 16px;
 	padding-right: 16px;
-	margin-bottom: 0;
+	
 	border-radius: 90px;
-	transition: none;
+	
 	color: #ffffff;
 	background: #282a36;
+}
+
+#custom-power:hover {
+    background: #5a0500;
+    color: #ffffff;
 }

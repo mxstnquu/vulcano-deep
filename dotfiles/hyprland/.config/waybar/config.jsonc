@@ -1,17 +1,46 @@
 {
     //================== Modules configuration ==================//
     "modules-left": [
-        // "logo",
-        "hyprland/workspaces"
+        "custom/archicon",
+        "hyprland/workspaces",
+        "idle_inhibitor",
+	"mpris"
+        //"cpu",
+        //"memory"
     ],
+    
+    "idle_inhibitor": {  
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "AC",
+            "deactivated": "DA"
+        }
+    },
+
+    "mpris": {
+        "format": "{artist} - {title}",
+        "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+        "status-icons": {
+            "paused": ""
+        },
+        "max-length": 40,
+        "on-click": "playerctl play-pause"
+    },
+
+    "cpu": {
+        "format": "{usage}% cpu",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}% mem"
+    },
 
     "modules-center": [],
 
     "modules-right": [
-        /////// "idle_inhibitor",
         "pulseaudio",
         "network",
-        // "memory",
         "backlight",
         "hyprland/language",
         "battery#bat2",
@@ -19,6 +48,10 @@
         "custom/power"
     ],
 
+    "custom/archicon": {
+      "format": "  ",
+      "tooltip": false
+    },
 
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
@@ -36,7 +69,7 @@
     "network": {
         "format-wifi": "{essid} ",
         "format-ethernet": "ethernet ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        // "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
@@ -47,12 +80,15 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
-    "memory": {
-        "format": "{}% ram"
+    "hyprland/language": {
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
 
     "battery#bat2": {
-        "format": "{}% bat"
+        "format": "{}% {icon}",
+        "format-full": "Charged",
+        "format-plugged": "{}% ",
+        "format-icons": "bat"
     },
 
     "custom/power": {
