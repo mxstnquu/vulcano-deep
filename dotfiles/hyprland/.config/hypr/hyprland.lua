@@ -21,6 +21,15 @@ local terminal = "kitty"
 local fileManager = "dolphin"
 local menu = "rofi -show drun"
 
+local VPN = "throne"
+local browser = "firefox"
+local browser_special = "firefox-developer-edition"
+local screen_lock = "hyprlock"
+local volume = "pavucontrol"
+local text_editor = "code"
+local image_view = "gwenview"
+local telegram = "/home/mxst/Downloads/Telegram/Telegram"
+
 
 --========================= AUTOSTART =========================--
 
@@ -40,6 +49,7 @@ end)
 
 hl.env("GDK_BACKEND", "wayland, x11,*")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+-- hl.env("QT_QPA_PLATFORMTHEME", "hyprqt6engine")
 
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("SDL_VIDEODRIVER", "wayland")
@@ -49,8 +59,10 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+
+-- f nvidia
+-- hl.env("LIBVA_DRIVER_NAME", "nvidia")
+-- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
@@ -128,19 +140,21 @@ hl.config ({
 
 --========================= ANIMATIONS =========================--
 
-hl.animations = {
-        enabled = false,
-        bezier = {
-            balance = { 0.2, 1, 0.3, 1 }
-        },
-        animation = {
-            { "windows", 1, 1.5, "balance", "slidefade 20%" },
-            { "windowsIn", 1, 1.5, "balance", "slidefade 20%" },
-            { "windowsOut", 1, 1.5, "balance", "slidefade 50%" },
-            { "fade", 1, 2, "default" },
-            { "workspaces", 1, 2, "balance", "slide" }
-        }
-    }
+hl.config ({
+    animations = { enabled = true, },
+})
+
+hl.curve("standart", { type = "bezier", points = { {0.2, 1}, {0.3, 1} } })
+
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 5, bezier = "standart", style = "slidefade" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 5, bezier = "standart", style = "slidefade" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 5, bezier = "standart", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "standart", style = "slide" })
+
+hl.animation({ leaf = "layersIn", enabled = true, speed = 5, bezier = "standart", style = "slidefade 20%" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "standart", style = "slidefade 20%" })
+
+hl.animation({ leaf = "fade", enabled = true, speed = 6, bezier = "standart"})
 
 
 --=========================== INPUT ===========================--
@@ -172,6 +186,7 @@ local mainMod = "SUPER"
 
 -- System binds
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + L", hl.dsp.window.float({ action = "float" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("kanshictl switch standard"))
@@ -185,18 +200,18 @@ hl.bind(mainMod .. " + SHIFT + CTRL + O", hl.dsp.window.fullscreen_state({intern
 
 -- Apps exec
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("firefox-developer-edition"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(browser_special))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(terminal .. " btop"))
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("pavucontrol"))
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("code"))
-hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("throne"))
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("gwenview"))
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("/home/mxst/Downloads/Telegram/Telegram"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(screen_lock))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(volume))
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(text_editor))
+hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(VPN))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(image_view))
+hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(telegram))
 
 -- Handy
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("handy --toggle-transcription"))
