@@ -1,0 +1,29 @@
+font=Arial
+icons=0
+
+width=320
+height=110
+margin=10
+padding=10, 15
+
+background-color=#0F060199
+text-color=#f2d995
+border-color=#5a0500
+border-size=2
+border-radius=8
+
+progress-color=over #DE2E03
+
+default-timeout=5000
+ignore-timeout=0
+layer=overlay
+anchor=top-right
+sort=-time
+
+[urgency=low]
+border-color=#B75122
+text-color=#a99768
+
+[urgency=high]
+border-color=#DE2E03
+default-timeout=0
