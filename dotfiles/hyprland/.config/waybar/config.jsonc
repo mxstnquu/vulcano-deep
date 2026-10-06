@@ -4,12 +4,13 @@
         "custom/archicon",
         "hyprland/workspaces",
         "idle_inhibitor",
-	"mpris"
-        //"cpu",
-        //"memory"
+        "custom/mpprev",
+	    "custom/mpnext",
+        "mpris"
     ],
-    
-    "idle_inhibitor": {  
+
+    "idle_inhibitor": 
+    {  
         "format": "{icon}",
         "format-icons": {
             "activated": "AC",
@@ -17,7 +18,20 @@
         }
     },
 
-    "mpris": {
+    "custom/mpprev":
+    {
+        "format": "prev",
+        "on-click": "playerctl previous"
+    },
+
+    "custom/mpnext":
+    {
+        "format": "next",
+        "on-click": "playerctl next"
+    },
+
+    "mpris": 
+    {
         "format": "{artist} - {title}",
         "format-paused": "{status_icon} <i>{artist} - {title}</i>",
         "status-icons": {
@@ -27,12 +41,14 @@
         "on-click": "playerctl play-pause"
     },
 
-    "cpu": {
+    "cpu": 
+    {
         "format": "{usage}% cpu",
         "tooltip": false
     },
 
-    "memory": {
+    "memory": 
+    {
         "format": "{}% mem"
     },
 
@@ -48,12 +64,14 @@
         "custom/power"
     ],
 
-    "custom/archicon": {
+    "custom/archicon": 
+    {
       "format": "  ",
       "tooltip": false
     },
 
-    "pulseaudio": {
+    "pulseaudio": 
+    {
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -66,32 +84,38 @@
         "on-click": "pavucontrol"
     },
 
-    "network": {
+    "network": 
+    {
         "format-wifi": "{essid} ",
-        "format-ethernet": "ethernet ",
+        "format-ethernet": "Wired ",
+        // "format-ethernet": "ethernet ",
         // "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
-    "backlight": {
+    "backlight": 
+    {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
-    "hyprland/language": {
+    "hyprland/language": 
+    {
         "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
 
-    "battery#bat2": {
+    "battery#bat2": 
+    {
         "format": "{}% {icon}",
         "format-full": "Charged",
         "format-plugged": "{}% ",
         "format-icons": "bat"
     },
 
-    "custom/power": {
+    "custom/power": 
+    {
     "format": "⏻",
     "tooltip": false,
     "on-click": "poweroff",

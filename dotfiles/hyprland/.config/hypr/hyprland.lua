@@ -88,7 +88,7 @@ hl.config({
         
         resize_on_border = false,
         allow_tearing = true,
-        layout = "dwindle"
+        layout = "scrolling"
     },
     
     decoration = {
@@ -114,8 +114,12 @@ hl.config ({
         preserve_split = true
     },
 
-    master = {
-        new_status = "master"
+    scrolling = {
+        column_width = 0.85,
+        focus_fit_method = 0,
+        direction = "right",
+        -- explicit_column_widths = 
+
     },
 
     misc = {
@@ -147,15 +151,15 @@ hl.config ({
 
 hl.curve("standart", { type = "bezier", points = { {0.2, 1}, {0.3, 1} } })
 
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 5, bezier = "standart", style = "slidefade" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 5, bezier = "standart", style = "slidefade" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 5, bezier = "standart", style = "slide" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "standart", style = "slide" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 4, bezier = "standart", style = "slidefade" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 4, bezier = "standart", style = "slidefade" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "standart", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "standart", style = "fade" })
 
-hl.animation({ leaf = "layersIn", enabled = true, speed = 5, bezier = "standart", style = "slidefade 20%" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "standart", style = "slidefade 20%" })
+hl.animation({ leaf = "layersIn", enabled = true, speed = 2, bezier = "standart", style = "slidefade 20%" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 2, bezier = "standart", style = "slidefade 20%" })
 
-hl.animation({ leaf = "fade", enabled = true, speed = 6, bezier = "standart"})
+hl.animation({ leaf = "fade", enabled = false})
 
 
 --=========================== INPUT ===========================--
@@ -190,11 +194,13 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + L", hl.dsp.window.float({ action = "float" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("kanshictl switch standard"))
-hl.bind(mainMod .. " + SHIFT + CTRL + P", hl.dsp.exec_cmd("kanshictl switch external"))
-hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd("kanshictl switch internal"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pin())
+-- hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("kanshictl switch standard"))
+-- hl.bind(mainMod .. " + SHIFT + CTRL + P", hl.dsp.exec_cmd("kanshictl switch external"))
+-- hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd("kanshictl switch internal"))
 hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("swapsplit"))
+hl.bind(mainMod .. " + K", hl.dsp.layout("expel"))
 hl.bind(mainMod .. " + O", hl.dsp.window.fullscreen()) 
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.window.fullscreen_state({internal = 1, client = 2})) 
 hl.bind(mainMod .. " + SHIFT + CTRL + O", hl.dsp.window.fullscreen_state({internal = 0, client = 0})) 
@@ -204,6 +210,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(browser_special))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(terminal .. " btop"))
@@ -215,21 +222,27 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(image_view))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(telegram))
 
 -- Handy
-hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("handy --toggle-transcription"))
+--hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("handy --toggle-transcription"))
 
 -- Hyprshot
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region -z -s -o ~/hyprshot"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("hyprshot -m region -z -s -o ~/hyprshot"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m output -z -s -o ~/hyprshot"))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("hyprshot -m output -z -s -o ~/hyprshot"))
 
 -- Window focus
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + Z", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + X", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Move windows
 hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + Z", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + X", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
 
@@ -259,10 +272,12 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%+"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%-"))
 
+-- Layout selecting
+hl.bind(mainMod .. " + ALT + D", hl.dsp.exec_cmd([[hyprctl eval 'hl.config({general = {layout = "dwindle"}})']]))
+hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd([[hyprctl eval 'hl.config({general = {layout = "scrolling"}})']]))
 
 -- pin a window
--- center the current window on screen
--- focus the next window
+-- focus the next workspace
 
 
 --========================== GESTURES ==========================--
@@ -271,7 +286,8 @@ hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "down", mods = "ALT", action = "close" })
 hl.gesture({ fingers = 3, direction = "up", mods = "SUPER", scale = 1.5, action = "fullscreen" })
 
--- hl.gesture({ fingers = 2, direction = "pinch", action = "cursorZoom", zoom_level = 1, mode = "live" })
+-- +super?
+hl.gesture({ fingers = 2, direction = "pinch", action = "cursorZoom", zoom_level = 1, mode = "live" })
 
 
 --=================== WINDOWS AND WORKSPACES ===================--
@@ -292,3 +308,17 @@ hl.config({
 
 hl.env("GDK_SCALE", "1")
 hl.env("XCURSOR_SIZE", "27")
+
+
+--======================== WINDOW_RULES ========================--
+
+hl.window_rule({
+    match = { class = "^(kitty)$" },
+    suppress_event = "maximize",
+    scrolling_width = 0.55
+})
+
+hl.window_rule({
+    match = { class = "^(Throne)$" },
+    scrolling_width = 0.4
+})

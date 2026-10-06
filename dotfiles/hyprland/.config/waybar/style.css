@@ -79,6 +79,30 @@ window#waybar.hidden {
 	background: #282a36;
 }
 
+#custom-mpprev {
+        margin-top: 6px;
+        margin-left: 7px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        margin-bottom: 0;
+        border-radius: 26px;
+        color: #ffffff;
+        background: #5a0500;
+}
+
+#custom-mpnext {
+        margin-top: 6px;
+        margin-left: 7px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        margin-bottom: 0;
+        border-radius: 26px;
+        color: #ffffff;
+        background: #5a0500;
+}
+
 #mpris {
         margin-top: 6px;
         margin-left: 7px;
