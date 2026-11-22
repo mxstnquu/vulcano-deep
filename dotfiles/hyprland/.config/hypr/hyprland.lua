@@ -2,15 +2,16 @@
 
 hl.monitor({
     output = "eDP-1",
-    mode = "1920x1080@144",
+    mode = "1920x1080@60",
     position = "0x0",
-    scale = 1.20
+    scale = 1.20,
+--    disabled = true
 })
 
 hl.monitor({
     output = "HDMI-A-1",
-    --mode = "2560x1440@144.00Hz",
-    mode = "1920x1080@74.99Hz",
+    mode = "2560x1440@144.00Hz",
+    --mode = "1920x1080@74.99Hz",
     position = "1600x0",
     scale = 1.0
 })
@@ -198,8 +199,8 @@ hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pin())
 -- hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("kanshictl switch standard"))
 -- hl.bind(mainMod .. " + SHIFT + CTRL + P", hl.dsp.exec_cmd("kanshictl switch external"))
 -- hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd("kanshictl switch internal"))
-hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + J", hl.dsp.layout("swapsplit"))
+-- hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))
+-- hl.bind(mainMod .. " + J", hl.dsp.layout("swapsplit"))
 hl.bind(mainMod .. " + K", hl.dsp.layout("expel"))
 hl.bind(mainMod .. " + O", hl.dsp.window.fullscreen()) 
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.window.fullscreen_state({internal = 1, client = 2})) 
@@ -321,4 +322,13 @@ hl.window_rule({
 hl.window_rule({
     match = { class = "^(Throne)$" },
     scrolling_width = 0.4
+})
+
+
+--====================== COLOR MANAGEMENT ======================--
+
+hl.config({
+    render = {
+        cm_auto_hdr = 0,
+    },
 })
